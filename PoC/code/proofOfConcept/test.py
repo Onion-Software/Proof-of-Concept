@@ -1,0 +1,32 @@
+from requests import post
+
+data = {'object_kind': 'push', 'event_name': 'push',
+        'before': '4a7a13e24467a395ea8abc5d7cfcef5e5e82fde0',
+        'after': '0ed94c70d40d0b9bcd6176238e1c0cda8f4710af', 'ref': 'refs/heads/master',
+        'checkout_sha': '0ed94c70d40d0b9bcd6176238e1c0cda8f4710af', 'message': None, 'user_id': 3901416,
+        'user_name': 'Linpeng Zhang', 'user_username': 'linpengzhang', 'user_email': '',
+        'user_avatar': 'https://secure.gravatar.com/avatar/c4c914abe661b7c75bdc98d1cfdb5775?s=80&d=identicon',
+        'project_id': 12044922, 'project': {'id': 12044922, 'name': 'test', 'description': '',
+                                            'web_url': 'https://gitlab.com/linpengzhang/test',
+                                            'avatar_url': None,
+                                            'git_ssh_url': 'git@gitlab.com:linpengzhang/test.git',
+                                            'git_http_url': 'https://gitlab.com/linpengzhang/test.git',
+                                            'namespace': 'linpengzhang', 'visibility_level': 0,
+                                            'path_with_namespace': 'linpengzhang/test',
+                                            'default_branch': 'master', 'ci_config_path': None,
+                                            'homepage': 'https://gitlab.com/linpengzhang/test',
+                                            'url': 'git@gitlab.com:linpengzhang/test.git',
+                                            'ssh_url': 'git@gitlab.com:linpengzhang/test.git',
+                                            'http_url': 'https://gitlab.com/linpengzhang/test.git'},
+        'commits': [{'id': '0ed94c70d40d0b9bcd6176238e1c0cda8f4710af', 'message': 'a\n',
+                     'timestamp': '2019-05-03T11:54:48Z',
+                     'url': 'https://gitlab.com/linpengzhang/test/commit/0ed94c70d40d0b9bcd6176238e1c0cda8f4710af',
+                     'author': {'name': 'Linpeng Zhang', 'email': 'zhanglinpeng1998@gmail.com'},
+                     'added': ['c'],
+                     'modified': [], 'removed': []}], 'total_commits_count': 1, 'push_options': {},
+        'repository': {'name': 'test', 'url': 'git@gitlab.com:linpengzhang/test.git', 'description': '',
+                       'homepage': 'https://gitlab.com/linpengzhang/test',
+                       'git_http_url': 'https://gitlab.com/linpengzhang/test.git',
+                       'git_ssh_url': 'git@gitlab.com:linpengzhang/test.git', 'visibility_level': 0}}
+post("http://localhost:5000/webhook", json=data)
+print("Data sent")

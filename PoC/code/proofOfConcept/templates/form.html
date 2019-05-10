@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<form action="/insert_contact" method="post">
+    <div class="form-group bmd-form-group">
+        <label class="bmd-label-floating" for="contact_name">Name</label>
+        <input type="text" class="form-control" id="contact_name" name="contact_name">
+    </div>
+    <div class="form-group bmd-form-group">
+        <label class="bmd-label-floating" for="contact_surname">Surname</label>
+        <input type="text" class="form-control" id="contact_surname" name="contact_surname">
+    </div>
+    <div class="form-group bmd-form-group">
+        <label class="bmd-label-floating" for="contact_email">Email address</label>
+        <input type="email" class="form-control" id="contact_email" name="contact_email">
+    </div>
+    <div class="form-group bmd-form-group">
+        <label class="bmd-label-floating" for="contact_telegram_username">Telegram username</label>
+        <input type="text" class="form-control" id="contact_telegram_username" name="contact_telegram_username">
+    </div>
+    <div class="form-group bmd-form-group">
+        <label class="bmd-label-floating" for="contact_slack_email">Slack email</label>
+        <input type="text" class="form-control" id="contact_slack_email" name="contact_slack_email">
+    </div>
+    <div class="form-group bmd-form-group">
+        <label class="bmd-label-floating" for="contact_use_email">E-mail notification (yes/no)</label>
+        <input type="text" class="form-control" id="contact_use_email" name="contact_use_email">
+    </div>
+    <div class="form-group bmd-form-group">
+        <label class="bmd-label-floating" for="contact_use_telegram">Telegram notification (yes/no)</label>
+        <input type="text" class="form-control" id="contact_use_telegram" name="contact_use_telegram">
+    </div>
+    <div class="form-group bmd-form-group">
+        <label class="bmd-label-floating" for="contact_use_slack">Slack notification (yes/no)</label>
+        <input type="text" class="form-control" id="contact_use_slack" name="contact_use_slack">
+    </div>
+    <div class="form-group bmd-form-group">
+        <label class="bmd-label-floating" for="contact_holidays_begin">Holidays begin</label>
+        <input type="text" class="form-control" id="contact_holidays_begin" name="contact_holidays_begin">
+    </div>
+    <div class="form-group bmd-form-group">
+        <label class="bmd-label-floating" for="contact_holidays_end">Holidays end</label>
+        <input type="text" class="form-control" id="contact_holidays_end" name="contact_holidays_end">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

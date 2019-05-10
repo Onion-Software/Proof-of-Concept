@@ -1,0 +1,139 @@
+{% extends 'index.html' %}
+
+{% block links %}
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a href="" class="nav-link">
+                <i class="material-icons">group</i>
+                Contacts
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="projects" class="nav-link">
+                <i class="material-icons">folder</i>
+                Projects
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="subscriptions" class="nav-link">
+                <i class="material-icons">list</i>
+                Subscriptions
+            </a>
+        </li>
+    </ul>
+{% endblock %}
+{% block find %}
+    <form class="form-inline ml-auto" method="post" action="/find_contacts">
+        <div class="form-group no-border">
+            <input type="text" class="form-control" placeholder="Search" name="keyword">
+        </div>
+        <button type="submit" class="btn btn-white btn-just-icon btn-round">
+            <i class="material-icons">search</i>
+        </button>
+    </form>
+{% endblock find %}
+{% block content %}
+    {% if contact_array %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for contact in contact_array %}
+                <tr>
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.surname }}</td>
+                    <td>{{ contact.email }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1 style="text-align: center">No contacts found</h1>
+    {% endif %}
+
+    <div>
+        <!-- Button trigger modal -->
+        <div style="text-align: right">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Insert contact
+            </button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form -->
+                        <form action="/insert_contact" method="post">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="contact_name">Name</label>
+                                <input type="text" class="form-control" id="contact_name" name="contact_name">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="contact_surname">Surname</label>
+                                <input type="text" class="form-control" id="contact_surname" name="contact_surname">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="contact_email">Email address</label>
+                                <input type="email" class="form-control" id="contact_email" name="contact_email">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="contact_telegram_username">Telegram
+                                    username</label>
+                                <input type="text" class="form-control" id="contact_telegram_username"
+                                       name="contact_telegram_username">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="contact_slack_email">Slack email</label>
+                                <input type="text" class="form-control" id="contact_slack_email"
+                                       name="contact_slack_email">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="contact_use_email">E-mail notification
+                                    (yes/no)</label>
+                                <input type="text" class="form-control" id="contact_use_email" name="contact_use_email">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="contact_use_telegram">Telegram notification
+                                    (yes/no)</label>
+                                <input type="text" class="form-control" id="contact_use_telegram"
+                                       name="contact_use_telegram">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="contact_use_slack">Slack notification
+                                    (yes/no)</label>
+                                <input type="text" class="form-control" id="contact_use_slack" name="contact_use_slack">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="contact_holidays_begin">Holidays begin</label>
+                                <input type="text" class="form-control" id="contact_holidays_begin"
+                                       name="contact_holidays_begin">
+                            </div>
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating" for="contact_holidays_end">Holidays end</label>
+                                <input type="text" class="form-control" id="contact_holidays_end"
+                                       name="contact_holidays_end">
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

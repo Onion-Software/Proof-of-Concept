@@ -1,0 +1,7 @@
+pytest
+pytest-cov
+pylint
+pymongo
+kafka-python
+mongoengine
+flask
